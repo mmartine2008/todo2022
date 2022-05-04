@@ -7,10 +7,13 @@
     $prioridad= $_POST['prioridad'];
 
     $sql = "INSERT INTO tarea (titulo, descripcion, prioridad, finalizada) 
-            VALUES ('$titulo', '$descripcion', $prioridad, 0)";
+            VALUES (?, ?, ?, 0)";
 
     $conexion = getConexion();
-    $conexion->exec($sql);
+
+    $sentencia = $conexion->prepare($sql);
+    $sentencia->execute([$titulo, $descripcion, $prioridad]);
+    
 ?>
 <h2>Se insertó correctamente</h2>
 <a href="index.php">Volver</a>
