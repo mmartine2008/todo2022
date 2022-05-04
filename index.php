@@ -25,16 +25,29 @@
         $tareas = getTareas();
         
         echo ('<table border="1">');
-        echo ('<tr><th>Id</th><th>Título</th>');
-        echo ('<th>Descripción</th><th>Prioridad</th><th>Finalizado</th></tr>');
+        echo ('<tr><th>Título</th>');
+        echo ('<th>Descripción</th><th>Prioridad</th>');
+        echo ('<th>Borrar</th><th>Finalizar</th></tr>');
         foreach ($tareas as $tarea) {
             echo('<tr>');
-            foreach ($tarea as $dato)
-            {
-                echo ('<td>');
-                echo ($dato);
-                echo ('</td>');
+            
+            $id = $tarea['id'];
+            $titulo = $tarea['titulo'];
+            $descripcion = $tarea['descripcion'];
+            $prioridad = $tarea['prioridad'];
+            $finalizada = $tarea['finalizada'];
+
+            echo("<td>$titulo</td>");
+            echo("<td>$descripcion</td>");
+            echo("<td>$prioridad</td>");
+            
+            echo('<td><a href="borrar.php?id='.$id.'">Borrar</a></td>');
+            if ($finalizada) {
+                echo('<td></td>');
+            } else {
+                echo('<td><a href="finalizar.php?id='.$id.'">Finalizar</a></td>');
             }
+            
             echo('</tr>');
         }
 
