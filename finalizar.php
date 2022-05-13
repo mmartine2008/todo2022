@@ -11,4 +11,4 @@ $conexion = getConexion();
 $sentencia = $conexion->prepare($sql);
 $sentencia->execute([$id]);
 
-header('Location: /loberia/todo/index.php');
+header('Location: index.php');
