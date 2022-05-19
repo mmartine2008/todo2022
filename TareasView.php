@@ -1,5 +1,5 @@
 <?php
-require_once ('lib/smarty/libs/Smarty.class.php');
+require_once ('lib/Smarty.class.php');
 
 class TareasView {
     function renderHeader(){
@@ -12,7 +12,7 @@ class TareasView {
     }
     
     function renderFormulario(){
-        $formulario = '<form action="registrar.php" method="post">
+        $formulario = '<form action="'.BASE_URL.'agregar" method="post">
                             
                             <label>Título: <input type="text" name="titulo"></label></p>
                             <label>Descripcion: <textarea name="descripcion" cols="50" rows="10"></textarea></label></p>

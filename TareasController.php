@@ -16,4 +16,16 @@ class TareasController{
         $this->view->renderTareas($tareas);
     }
 
+    function registrarTarea() {
+
+        $titulo = $_POST['titulo'];
+        $descripcion = $_POST['descripcion'];
+        $prioridad= $_POST['prioridad'];
+
+        $this->model->registrar($titulo, $descripcion, $prioridad);
+
+        $this->showTareas();
+    }
+
+
 }
