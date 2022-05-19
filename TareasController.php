@@ -27,5 +27,18 @@ class TareasController{
         $this->showTareas();
     }
 
+    function borrarTarea($id) {
+
+        $this->model->borrarTarea($id);
+
+        $this->showTareas();
+    }    
+
+    function finalizarTarea($id) {
+
+        $this->model->finalizarTarea($id);
+
+        $this->showTareas();
+    }    
 
 }

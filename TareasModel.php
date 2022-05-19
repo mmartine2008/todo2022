@@ -37,4 +37,20 @@ class TareasModel{
         $sentencia->execute([$titulo, $descripcion, $prioridad]);
 
     }
+
+    function borrarTarea($id){
+
+        $sql = "DELETE FROM tarea WHERE id = ?";
+    
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);
+   
+    }    
+
+    function finalizarTarea($id) {
+        $sql = "UPDATE tarea SET finalizada = 1 WHERE id = ?";
+
+        $sentencia = $this->db->prepare($sql);
+        $sentencia->execute([$id]);        
+    }
 }

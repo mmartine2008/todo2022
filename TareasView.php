@@ -48,11 +48,11 @@ class TareasView {
             echo("<td>$descripcion</td>");
             echo("<td>$prioridad</td>");
             
-            echo('<td><a href="borrar.php?id='.$id.'">Borrar</a></td>');
+            echo('<td><a href="'.BASE_URL.'eliminar/'.$id.'">Borrar</a></td>');
             if ($finalizada) {
                 echo('<td></td>');
             } else {
-                echo('<td><a href="finalizar.php?id='.$id.'">Finalizar</a></td>');
+                echo('<td><a href="'.BASE_URL.'terminar/'.$id.'">Finalizar</a></td>');
             }
             
             echo('</tr>');
