@@ -12,7 +12,6 @@ if (!empty($_GET['action'])) {
 }
 
 $params = explode('/', $accion);
-print_r($params);
 
 switch ($params[0]) {
     case 'home':
