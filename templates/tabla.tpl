@@ -1,4 +1,4 @@
-<table border="1">
+<table class="table">
         <tr>
             <th>Título</th>
             <th>Descripción</th>
