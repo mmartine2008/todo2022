@@ -4,10 +4,12 @@ require_once ('api/ApiView.php');
 
 class ApiTaskController {
     private $model;
-    
+    private $data; 
+
     public function __construct() {
         $this->model = new TareasModel();
         $this->view = new ApiView();
+        $this->data = file_get_contents("php://input"); 
     }
     
     function obtenerTareas() {
@@ -17,13 +19,17 @@ class ApiTaskController {
     }
 
     function crearTarea() {
-        $datos = $_POST;
-        $titulo = $datos['titulo'];
-        $descripcion = $datos['descripcion'];
-        $prioridad = $datos['prioridad'];
+        $datos = $this->getData();
+        $titulo = $datos->titulo;
+        $descripcion = $datos->descripcion;
+        $prioridad = $datos->prioridad;
 
         $this->model->registrar($titulo, $descripcion, $prioridad);
 
-        $this->view->response("", "200");
+        $this->view->response("agregado satisfactoriamente", "200");
     }
+
+    function getData(){ 
+        return json_decode($this->data); 
+    }  
 }
