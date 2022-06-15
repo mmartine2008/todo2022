@@ -1,35 +1,24 @@
 "use strict"
 
-getTasks();
+let app = new Vue({
+    el: "#template-vue-tasks",
+    data: {
+        subtitle: "Estas tareas se renderizan desde el cliente usando Vue.js",
+        tasks: [] 
+    }
+});
 
 function getTasks() {
-    fetch('api/tareas')
+    fetch("api/tareas")
     .then(response => response.json())
     .then(tasks => {
-        let content = document.querySelector(".lista-tareas");
-        content.innerHTML = "";
-        for(let task of tasks) {
-            content.innerHTML += createTaskHTML(task);
-        }
+        app.tasks = tasks; // similar a $this->smarty->assign("tasks", $tasks)
     })
     .catch(error => console.log(error));
 }
 
-function createTaskHTML(task) {
-    let element = `${task.titulo}: ${task.descripcion}: ${task.prioridad}`;
+getTasks();
 
-    if (task.finalizada == 1)
-        element = `<strike>${element}</strike>`;
-    
-        else {
-        element += `<a href="tarea/${task.id}">Ver</a> `;
-        element += `<a href="finalizar/${task.id}">Finalizar</a> `;
-        element += `<a href="borrar/${task.id}">Eliminar</a>`;
-    }
-
-    element = `<li>${element}</li>`;
-    return element;  
-}
 
 document.querySelector("#form-tarea").addEventListener('submit', addTask);
 function addTask(e) {
